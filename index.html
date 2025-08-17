@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertisseur de format</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .container {
+      text-align: center;
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      width: 400px;
+      max-width: 90%;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+      padding: 10px;
+      resize: none;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #2a2a2a;
+      border: 1px solid #333;
+      min-height: 40px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Convertisseur de nombres</h2>
+    <p>Entrez vos nombres séparés par des virgules :</p>
+    <textarea id="inputText" placeholder="Exemple : 1.37, 16.8, 2.45"></textarea>
+    <br>
+    <button onclick="convert()">Convertir</button>
+    <div class="result" id="outputText"></div>
+  </div>
+
+  <script>
+    function convert() {
+      let input = document.getElementById("inputText").value;
+      // Supprimer espaces après les virgules
+      let cleaned = input.replace(/,\s*/g, ",");
+      // Ajouter "x" après chaque nombre
+      let converted = cleaned.replace(/([0-9]+(?:\.[0-9]+)?)/g, "$1x");
+      document.getElementById("outputText").innerText = converted;
+    }
+  </script>
+</body>
+</html>
